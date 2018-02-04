@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>JSTest</title>
+  <style>
+    #box1{
+      width: 100px;
+      height: 150px;
+      background: #f22f3f;
+    }
+  </style>
+  <script src="js/test.js"></script>
+  <script>
+  $(function(){
+    $('btn').onclick = function(){
+      alert(typeof(parseFloat(getStyle($(box1),'height'))));
+    }
+    function getStyle(obj,attr){
+      if(obj.currentStyle){
+        return obj.currentStyle[attr];
+      }else {
+        return getComputedStyle(obj)[attr];
+      }
+    }
+  });
+    // var box = document.getElementById('box1');
+    // var btn = document.getElementById('btn');
+
+  </script>
+</head>
+<body>
+  <div>
+    <div id="box1" name="box">cd</div>
+    <input id="btn" type="button" value="Click"/>
+  </div>
+</body>
+</html>

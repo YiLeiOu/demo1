@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>注册</title>
+  <link rel="stylesheet" href="css/public.css" type="text/css"/>
+  <style>
+  body{
+    background: #f5f5f5;
+  }
+  header{
+    height: 0.88rem;
+    width: 94%;
+    padding: 0 3%;
+    line-height: 0.88rem;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    background: #01cbbb;
+  }
+  header a{
+    display: inline-block;
+    font-size: 0.34rem;
+    color: #ffffff;
+  }
+  .position_left{
+    margin-left: -0.14rem;
+  }
+  .position_right{
+    margin-right: -0.05rem;
+  }
+  .icon{
+    font-size: 0.6rem;
+  }
+
+
+  .input{
+    margin-top:0.2rem;
+    height: 0.96rem;
+    line-height: 0.96rem;
+    width: 94%;
+    padding:0 3%;
+    border-top: 0.01rem solid #e4e4e4;
+    border-bottom: 0.01rem solid #e4e4e4;
+    background: #ffffff;
+  }
+  .input_position{
+    margin-left: -0.1rem;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+  }
+  .input span{
+    font-size: 0.26rem;
+    color: #6c636f;
+    padding-left: 0.15rem;
+  }
+  .input_left{
+    width: 1.06rem;]
+  }
+  .input_right{
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  .input_right input{
+    flex: 2;
+    height: 0.54rem;
+    background: #f5f5f5;
+    outline: none;
+    border: 0.01rem solid #e4e4e4;
+    border-radius: 0.05rem;
+  }
+  .account,.test_code,.password{
+    margin-left: 0.25rem;
+    font-size: 0.24rem;
+  }
+
+
+  footer{
+    margin: 0 auto;
+    margin-top: 0.78rem;
+  }
+  footer a{
+    display: block;
+    margin: 0 auto;
+    width: 6rem;
+    height: 0.64rem;
+    text-align: center;
+    line-height: 0.64rem;
+    font-size: 0.28rem;
+    border: 0.01rem solid #01cbbb;
+    border-radius: 0.32rem;
+  }
+  .enroll{
+    background: #01cbbb;
+    color: #fff;
+  }
+  .login{
+    margin-top: 0.4rem;
+    color: #01cbbb;
+  }
+
+
+
+  </style>
+  <script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+      // (function (doc, win) {
+      //     var docEl = doc.documentElement
+      //     var designWidth = 640 // 设计稿宽度
+      //     var baseWidth = 320 // 如果 clientWidth 取不到值，给个最小宽度值
+      //     var baseFontSize = 100 // Rem 计算基础值，我这里给 100
+      //     var giveBaseWidth = 480
+      //     var giveBaseFontSize = (giveBaseWidth / designWidth) * baseFontSize
+      //     var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize'
+      //     recalc = function () {
+      //         var clientWidth = docEl.clientWidth || baseWidth
+      //         if (clientWidth > designWidth) clientWidth = designWidth
+      //         var fontSize = (baseFontSize * clientWidth / designWidth)
+      //         fontSize = fontSize >= giveBaseFontSize ? giveBaseFontSize : fontSize
+      //         docEl.style.fontSize = fontSize + 'px'
+      //         // docEl.style.opacity = 1;
+      //     }
+      //     doc.addEventListener &&
+      //         (
+      //             win.addEventListener(resizeEvt, recalc, false),
+      //             doc.addEventListener('DOMContentLoaded', recalc, false)
+      //         )
+      // })(document, window)
+
+  </script>
+</head>
+<body>
+  <header>
+      <a class="position_left" href="#"><i class="icon iconfont icon-dajiantou"></i></a>
+      <a>登录</a>
+      <a class="position_right" href="#"><i class="icon iconfont icon-yonghu"></i></a>
+  </header>
+  <section>
+    <div id="account" class="input">
+      <div class="input_position">
+        <span class="input_left">手机号码</span>
+        <div class="input_right">
+          <input class="account" type="text" name="account" value="请输入账号"onFocus="if(value==defaultValue){value='';this.style.color='#000'}"onBlur="if(!value){value=defaultValue;this.style.color='#999'}"style="color:#999999"/>
+        </div>
+      </div>
+    </div>
+    <div id="test_code" class="input">
+      <div class="input_position">
+        <span class="input_left">验证码</span>
+        <div class="input_right">
+          <input class="test_code" type="text" name="test_code" value="请输入短信验证码"onFocus="if(value==defaultValue){value='';this.style.color='#000'}"onBlur="if(!value){value=defaultValue;this.style.color='#999'}"style="color:#999999"/>
+          <a href="#"><span style="color: #a8a0ab">获取验证码</span></a>
+        </div>
+      </div>
+    </div>
+    <div id="password" class="input">
+      <div class="input_position">
+        <span class="input_left">密码</span>
+        <div class="input_right">
+          <input class="password" type="text" name="password" value="请输入密码"onFocus="if(value==defaultValue){value='';this.style.color='#000'}"onBlur="if(!value){value=defaultValue;this.style.color='#999'}"style="color:#999999"/>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <a href="#" class="enroll">立即注册</a>
+    <a href="#" class="login">已有账号，请登录</a>
+  </footer>
+</body>
+</html>

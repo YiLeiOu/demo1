@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>登录</title>
+
+  <link rel="stylesheet" href="css/public.css" type="text/css"/>
+  <style>
+    body{
+      background: #f5f5f5;
+    }
+    header{
+      height: 0.88rem;
+      width: 94%;
+      padding: 0 3%;
+      line-height: 0.88rem;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-between;
+      background: #01cbbb;
+    }
+    header a{
+      display: inline-block;
+      font-size: 0.34rem;
+      color: #ffffff;
+    }
+    .icon{
+      font-size: 0.6rem;
+    }
+    section{
+
+    }
+    .input{
+      margin-top:0.2rem;
+      height: 0.96rem;
+      line-height: 0.96rem;
+      width: 94%;
+      padding: 0 3%;
+      border-top: 0.01rem solid #e4e4e4;
+      border-bottom: 0.01rem solid #e4e4e4;
+      background: #ffffff;
+    }
+    .input span{
+      font-size: 0.26rem;
+      color: #6c636f;
+      padding-left: 0.15rem;
+    }
+    .input input{
+      background: #f5f5f5;
+      outline: none;
+      border: 0.01rem solid #e4e4e4;
+      border-radius: 0.05rem;
+    }
+    .count{
+      width: 4.8rem;
+      height: 0.56rem;
+      margin-left: 0.25rem;
+      font-size: 0.24rem;
+    }
+    .keywd{
+      width: 3.3rem;
+      height: 0.56rem;
+      margin-left: 0.25rem;
+      font-size: 0.24rem;
+    }
+    .login_enroll{
+      width: 94%;
+      padding: 0 3%;
+      padding-top:0.6rem;
+    }
+    .login_btn{
+      display: block;
+      margin: 0 auto;
+      width: 5.98rem;
+      height: 0.64rem;
+      text-align: center;
+      line-height: 0.64rem;
+      font-size: 0.28rem;
+      color: #01cbbb;
+      border: 0.01rem solid #01cbbb;
+      border-radius: 0.32rem;
+    }
+    .newuser{
+      display: block;
+      padding-top: 0.15rem;
+      color: #988e9c;
+      font-size: 0.24rem;
+    }
+
+  </style>
+  <script>
+  document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + 'px';
+  // (function (doc, win) {
+  //     var docEl = doc.documentElement
+  //     var designWidth = 640 // 设计稿宽度
+  //     var baseWidth = 320 // 如果 clientWidth 取不到值，给个最小宽度值
+  //     var baseFontSize = 100 // Rem 计算基础值，我这里给 100
+  //     var giveBaseWidth = 480
+  //     var giveBaseFontSize = (giveBaseWidth / designWidth) * baseFontSize
+  //     var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize'
+  //     recalc = function () {
+  //         var clientWidth = docEl.clientWidth || baseWidth
+  //         if (clientWidth > designWidth) clientWidth = designWidth
+  //         var fontSize = (baseFontSize * clientWidth / designWidth)
+  //         fontSize = fontSize >= giveBaseFontSize ? giveBaseFontSize : fontSize
+  //         docEl.style.fontSize = fontSize + 'px'
+  //         // docEl.style.opacity = 1;
+  //     }
+  //     doc.addEventListener &&
+  //         (
+  //             win.addEventListener(resizeEvt, recalc, false),
+  //             doc.addEventListener('DOMContentLoaded', recalc, false)
+  //         )
+  // })(document, window)
+  </script>
+</head>
+<body>
+  <header>
+      <a class="icon" href="#"><i class="icon iconfont icon-dajiantou"></i></a>
+      <a>登录</a>
+      <a class="icon" href="#"><i class="icon iconfont icon-tianjiayonghu"></i></a>
+  </header>
+  <section>
+    <div class="input">
+        <span>账号</span>
+        <input class="count" type="text" name="count" value="请输入账号"onFocus="if(value==defaultValue){value='';this.style.color='#000'}"onBlur="if(!value){value=defaultValue;this.style.color='#999'}"style="color:#999999"/>
+
+    </div>
+    <div class="input">
+      <span>密码</span>
+      <input class="keywd" type="password" name="count" value="请输入密码"onFocus="if(value==defaultValue){value='';this.style.color='#000'}"onBlur="if(!value){value=defaultValue;this.style.color='#999'}"style="color:#999999"/><a href="#"><span style="color: #a8a0ab">忘记密码</span></a>
+    </div>
+  </section>
+  <section>
+    <div class="login_enroll">
+      <a class="login_btn" href="#">立即登录</a>
+      <a class="newuser" href="#">新用户注册</a>
+    </div>
+
+  </section>
+</body>
+</html>
