@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>图片切换</title>
+	<style type="text/css">
+		/* 样式重置 */
+		header,
+		body,
+		p,
+		img{
+			padding:0;
+			margin:0;
+		}
+		img{
+			border:none;
+		}
+		a{
+			text-decoration:none;
+		}
+		
+		/* 设置样式 */
+		header{
+			width : 800px;
+			height : 40px;
+			margin : 30px auto 0;
+			border : 4px solid #8080c0;
+			line-height : 40px;
+			font-size : 24px;
+			color : block;
+			background : #bdc6d0;
+			border-radius : 6px;
+			text-align : center;
+		}
+		header input{
+			width:100px;
+			height:24px;
+			border-radius:5px;
+			font-size:16px;
+			background:#9a9da2;
+		}
+		.warp{
+			width:800px;
+			height:400px;
+			margin: 0 auto;
+		}
+		#box,#box1{
+			height: 392px;
+			margin:0;border: 4px solid green;
+			border-radius: 6px;
+			position: relative;
+			overflow: hidden;
+			background: #8080c0;
+		}
+		#box{
+			float: left;
+			width:540px;
+		}
+		#box1{
+			float: right;
+			width:240px;
+		}
+		
+		#picture{
+			height: 330px;
+			width: 540px;
+		}
+		#picture1{
+			height: 330px;
+			width: 240px;
+		}
+		#picName,
+		#picNum,
+		#picName1,
+		#picNum1{
+			height:30px;
+			background:black;
+			opacity:0.4;
+			line-height:30px;
+			color:#ffffff;
+			text-align:center;
+			font-size:16px;
+		}
+		
+		#picName,
+		#picNum{
+			width:540px;
+		}
+		
+		#picName1,
+		#picNum1{
+			width:240px;
+		}
+		#next{
+			display:inline-block;
+			background: red;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		window.onload=function() {
+			/* 获取元素 */
+			var Oimg=document.getElementById('picture');
+			var Oimg1=document.getElementById('picture1');
+			var OpicName=document.getElementById('picName');
+			var OpicName1=document.getElementById('picName1');
+			var OpicNum=document.getElementById('picNum');
+			var OpicNum1=document.getElementById('picNum1');
+			
+			var Onext=document.getElementById('next');
+			var Obutn1=document.getElementById('butn1');
+			var Obutn2=document.getElementById('butn2');
+			/* 数组获取文件资源 */
+			var arrUrl=['img/01.jpg','img/02.jpg','img/03.jpg','img/04.jpg'];
+			var arrUrl0=['img/2.png','img/3.png','img/4.png'];
+			var num=0;
+			var num1=0;
+			
+			
+			function picTab(){
+				OpicNum.innerHTML=num+1+'/'+arrUrl.length;
+				OpicName.innerHTML='第一组第'+(num+1)+'张';
+				Oimg.src=arrUrl[num];
+			}
+			picTab();//初始化
+			function picTab1(){
+				OpicNum1.innerHTML=num1+1+'/'+arrUrl0.length;
+				OpicName1.innerHTML='第二组第'+(num1+1)+'张';
+				Oimg1.src=arrUrl0[num1];
+			}
+			picTab1();//初始化
+			
+
+			// 切换函数
+			function fun(){
+				num++;
+				if(num==arrUrl.length){
+					num=0;
+				};
+				picTab();
+			}
+			function fun1(){
+				num1++;
+				if(num1==arrUrl0.length){
+					num1=0;
+				};
+				picTab1();
+			}
+			
+			function fun3(){
+				num--;
+				if(num==-1){
+					num=arrUrl.length-1;
+				};
+				picTab();
+			}
+			function fun4(){
+				num1--;
+				if(num1==-1){
+					num1=arrUrl0.length-1;
+				};
+				picTab1();
+			}
+			
+			//点击图片进行切换
+			Oimg.onclick=function(){
+				fun();
+			};
+			Oimg1.onclick=function(){
+				fun1();
+			};
+
+			//点击按钮切换整组图片
+			Obutn1.onclick=function (){
+				Obutn1.style.background="red";
+				Obutn2.style.background="#9a9da2";
+				fun3();
+				fun4();
+			};
+			Obutn2.onclick=function (){
+				Obutn2.style.background="red";
+				Obutn1.style.background="#9a9da2";
+				fun();
+				fun1();
+			};
+		};
+	</script>
+	
+</head>
+
+<body>
+	<header>
+		<input id="butn1" type="button" value="上一组">
+		<input id="butn2" type="button" value="下一组">
+	</header>
+	<div class="warp">
+		<div id="box">
+			<a id="next" href="javascript:;">
+				<img id="picture"/>
+			</a>
+			<p id="picName">第一组</p>
+			<p id="picNum">图片计算中...</p>
+		</div>
+		
+		<div id="box1">
+			<a id="next" href="javascript:;">
+				<img id="picture1"/>
+			</a>
+			<p id="picName1">第二组</p>
+			<p id="picNum1">图片计算中...</p>
+		</div>
+	</div>
+</body>
+</html>

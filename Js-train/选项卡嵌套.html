@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>选项卡嵌套</title>
+<style>
+	header,section,img,ul,li,p{padding: 0;margin:0;}
+	li{list-style: none;}
+	img{border:none;}
+	a{text-decoration: none;color: #ffffff;font-weight: bold;font-size: 14px;}
+
+	#warp{
+		width: 700px;
+		height: 320px;
+		padding: 10px;
+		margin: 50px auto;
+		border: 2px solid #ce948c;
+	}
+
+	#menu{
+		height: 320px;
+		width: 120px;
+		float: left;
+		
+	}
+	#menu ul{
+
+	}
+	#menu li{
+		height: 80px;
+		line-height: 80px;
+		text-align: center;
+		background: #e7e7e7;
+	}
+	#menu li a{
+		font-size: 16px;
+		font-weight: bold;
+		color: #0f0f0f;
+	}
+
+	#content{
+		height: 320px;
+		width: 580px;
+		float: right;
+		background: #c6bd94;
+	}
+	.picture img{
+		width: 580px;
+		height: 320px;
+	}
+	#content .hide{
+		display: none;
+	}
+	#content .show{
+		display: block;
+	}
+	#content ul{
+		position: relative;
+		left: 0;
+		top: -44px;
+	}
+	#content li{
+		float: left;
+		margin-right: 1px;
+		padding: 0 20px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		background: black;
+		opacity: 0.5;
+		color: #ffffff;
+	}
+	#content .active{
+		background: red;
+	}
+	#content .normal{
+		background: black;
+	}
+	#content .tab1 li{width: 104px}
+	#content .tab2 li{width: 152px}
+	#content .tab3 li{width: 249px}
+	#content .tab4 li{width: 75px}
+
+
+</style>
+
+<script type="text/javascript">
+	window.onload=function(){
+		var Omenu=document.getElementById('menu');
+		var menu_ali=Omenu.getElementsByTagName('li');
+		var Ocont=document.getElementById('content');
+		var aDIV=Ocont.getElementsByTagName('div');
+		var aLi=null;
+		var arrli=[	['img/01.jpg','img/02.jpg','img/03.jpg','img/6.jpg'],
+					['img/03.jpg','img/02.jpg','img/01.jpg'],
+					['img/02.jpg','img/01.jpg'],
+					['img/6.jpg','img/02.jpg','img/03.jpg','img/01.jpg','img/05.jpg']			
+		];
+		//初始化
+		function init(){
+			menu_ali[0].style.background='#ffffff';
+			aDIV[0].className='show';
+			var aimg =aDIV[0].getElementsByTagName('img')[0];
+			aimg.src=arrli[0][0];
+		}
+		init();
+
+		//主菜单点击事件
+		for(var i=0 ; i<menu_ali.length ; i++){
+			menu_ali[i] .index=i;
+			//var num=this.index;
+			menu_ali[i] .onclick=function(){
+				for(var j=0; j<menu_ali.length; j++){
+					menu_ali[j] .style.background='#e7e7e7';
+					aDIV[j].className='hide';
+
+				}	
+				this.style.background='#ffffff';
+				aDIV[this.index].className='show';
+				var aimg =aDIV[this.index].getElementsByTagName('img')[0];
+
+				aimg.src=arrli[this.index][0];
+			}
+		}		
+		
+		//子菜单鼠标滑过切换图片
+		function fun1(div,arr){	
+			var aLi=div.getElementsByTagName('li');
+			var aimg =div.getElementsByTagName('img')[0];
+			for(var j=0; j<aLi.length; j++){
+				aLi[j].index=j;
+				aLi[j].onmouseover=function(){
+					for(var k=0; k<aLi.length; k++){
+						aLi[k].className='normal';
+					}
+					this.className='active';
+					aimg.src=arr[this.index];
+				}
+			}
+		}
+		//循环嵌套，把点击动作与鼠标滑过关联起来
+		for( var i=0; i<aDIV.length; i++ ){
+			fun1( aDIV[i], arrli[i] );
+		}
+	}
+</script>
+</head>
+<body>
+	<!--
+	<div id="warp">
+		<ul id="nav" class="left">
+			<li><a href="#">最热团购</a></li>
+			<li><a href="#">商城特惠</a></li>
+			<li><a href="#">名品推荐</a></li>
+			<li><a href="#">缤纷活动</a></li>
+		</ul>
+		<ul id="child" class="right">
+			<li class="activ">
+				<div class="picture">
+					<a href="#"><img src="img/01.jpg"></a>
+				</div>
+				<div class="child_list">
+					<p><a href="javascript:;">子菜单1子菜单1</a></p>
+					<p><a href="javascript:;">子菜单2子菜单2</a></p>
+				</div>
+			</li>
+			<li class="hide">
+				<div class="picture">
+					<a href="#"><img src="img/02.jpg"></a>
+				</div>
+				<div class="child_list">
+					<p><a href="javascript:;">子菜单1</a></p>
+					<p><a href="javascript:;">子菜单2</a></p>
+					<p><a href="javascript:;">子菜单3</a></p>
+				</div>
+			</li>
+			<li class="hide">
+				<div class="picture">
+					<a href="#"><img src="img/03.jpg"></a>
+				</div>
+				<div class="child_list">
+					<p><a href="javascript:;">子菜单1</a></p>
+					<p><a href="javascript:;">子菜单2</a></p>
+					<p><a href="javascript:;">子菜单3</a></p>
+					<p><a href="javascript:;">子菜单4</a></p>
+					<p><a href="javascript:;">子菜单5</a></p>
+				</div>
+			</li>
+			<li class="hide">
+				<div class="picture">
+					<a href="#"><img src="img/04.jpg"></a>
+				</div>
+				<div class="child_list">
+					<p><a href="javascript:;">子菜单1</a></p>
+					<p><a href="javascript:;">子菜单2</a></p>
+					<p><a href="javascript:;">子菜单3</a></p>
+					<p><a href="javascript:;">子菜单4</a></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	-->
+	<div id="warp">
+		<div id="menu">
+			<ul>
+				<li ><a href="#">列表项1</a></li>
+				<li><a href="#">列表项2</a></li>
+				<li><a href="#">列表项3</a></li>
+				<li><a href="#">列表项4</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="hide">
+				<P class="picture"><img src=""></P>
+				<ul class="tab1">
+					<li class="active">菜单一</li>
+					<li>菜单二</li>
+					<li>菜单三</li>
+					<li>菜单四</li>
+				</ul>
+			</div>
+			<div class="hide">
+				<P class="picture"><img src=""></P>
+				<ul class="tab2">
+					<li class="active">菜单一</li>
+					<li>菜单二</li>
+					<li>菜单三</li>
+					
+				</ul>
+			</div>
+			<div class="hide">
+				<P class="picture"><img src=""></P>
+				<ul class="tab3">
+					<li class="active">菜单一</li>
+					<li>菜单二</li>
+				</ul>
+			</div>
+			<div class="hide">
+				<P class="picture"><img src=""></P>
+				<ul class="tab4">
+					<li class="active">菜单一</li>
+					<li>菜单二</li>
+					<li>菜单三</li>
+					<li>菜单四</li>
+					<li>菜单wu</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

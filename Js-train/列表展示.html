@@ -1,0 +1,316 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>展示列表</title>
+<style>
+	ul,h2,li,p{padding: 0;margin: 0;}
+	li{list-style: none;}
+	a{
+		text-decoration: none;
+		color: #393131;
+	}
+	em{
+		font-style: normal;
+	}
+	#rank{
+		width: 270px;
+		height: 400px;
+		padding: 5px;
+		margin: 100px auto;
+		background: #dee7e7;
+	}
+	#head{
+		position: relative;
+		width: 270px;
+		height: 32px;
+		line-height: 32px;
+		border-bottom: 1px solid #94bdd6;
+	}
+	#head span{
+		padding: 0 10px;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	#head .a_nav{
+		position: absolute;
+		top: 7px;
+		right: 0;
+	}
+	#head a{
+		display: inline-block;
+		float: left;
+		width: 35px;
+		height: 24px;
+		margin-left: -1px;
+		line-height: 24px;
+		text-align: center;
+		font-size: 14px;
+		border:1px solid #94bdd6;
+	}
+	#head .activ{
+		background: white;
+		border-bottom: 1px solid #ffffff;
+	}
+	#box{
+		width: 270px;
+		height: 336px;
+	}
+	#box li{
+		position:relative;
+		height: 30px;
+		line-height: 30px;
+		padding: 0 10px;
+		font-size: 12px;
+		border-bottom: 1px solid white;
+	}
+	#day,
+	#week,
+	#all{
+		display: none;
+	}
+	
+
+	#day .move_in,
+	#week .move_in,
+	#all .move_in{
+		height: 80px;
+		background: white;
+	}
+
+	#day a,
+	#day span,
+	#day img,
+	#day em,
+	#day input,
+	#week a,
+	#week span,
+	#week img,
+	#week em,
+	#week input,
+	#all a,
+	#all span,
+	#all img,
+	#all em,
+	#all input{
+		display: inline-block;
+		position: absolute;
+	}
+	#day span,
+	#week span,
+	#all span{
+		top: 5px;
+		height: 20px;
+		line-height: 20px;
+		padding: 0 6px;
+    	font-size: 10px;
+    	color: white;
+    	font-weight: bold;
+    	background: #29739c;
+	}
+	#day a,
+	#week a,
+	#all a{
+		top: 0;left: 38px;
+	}
+	#day img,
+	#week img,
+	#all img{
+		display: none;
+		width: 66px;
+		padding: 2px;
+		border:1px solid black;
+	}
+	
+	#day em,
+	#day input,
+	#week em,
+	#week input,
+	#all em,
+	#all input{
+		display: none;
+	}
+		
+
+	
+	#day .move_in a,
+	#week .move_in a,
+	#all .move_in a{
+		display: none;
+	}
+	#day .move_in img,
+	#week .move_in img,
+	#all .move_in img{
+		top: 4px;left: 34px;
+		display: inline-block;
+	}
+	#day .move_in em,
+	#week .move_in em,
+	#all .move_in em{
+		width: 120px;
+		top: 4px;left: 114px;
+		display: inline-block;
+		line-height: 20px;
+	}
+	#day .move_in input,
+	#week .move_in input,
+	#all .move_in input{
+		top: 54px;left: 216px;
+		display: inline-block;
+	}
+	
+	#box .visiable{
+		display: block;
+	}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var ohead=document.getElementById('head');
+	var obox=document.getElementById('box');
+	var oa=ohead.getElementsByTagName('a');
+	var oUl=obox.getElementsByTagName('ul');
+	var oLi=obox.getElementsByTagName('li');
+	
+	var arrLi=[];
+	
+	for(j=0; j<oa.length; j++){
+		oa[j].index=j;
+		oa[j].onclick=function(){
+			for(i=0; i<oa.length; i++){
+				oa[i].className='';
+				oUl[i].className='';
+			}
+			this.className='activ';
+			oUl[this.index].className='visiable';
+		}
+	}
+	
+	for(i=0; i<oLi.length; i++){
+		oLi[i].onmouseover=function(){
+			for(j=0; j<oLi.length; j++){
+				oLi[j].className='';
+			}
+			this.className='move_in';
+		}
+	}
+	
+
+
+}
+</script>
+</head>
+
+<body>
+	<div id="rank">
+		<div id="head">
+			<span>观看排行榜</span>
+			<p class="a_nav">
+				<a class="activ" href="#">每日</a>
+				<a href="#">每周</a>
+				<a href="#">全部</a>
+			</p>
+		</div>
+		
+		<div id="box">
+			<ul id="day" class="visiable">
+				<li class="move_in">
+					<span id="num">1</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/01.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">2</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/01.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li>
+					<span id="num">3</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/01.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">4</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/01.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li>
+					<span id="num">5</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/01.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">6</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/01.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+			</ul>
+			<ul id="week">
+				<li class="move_in">
+					<span id="num">1</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/02.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">2</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/02.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">3</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/02.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				
+			</ul>
+			<ul id="all">
+				<li class="move_in">
+					<span id="num">1</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/03.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">2</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/03.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">3</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/03.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+				<li class="">
+					<span id="num">4</span>
+					<a href="#">深度解密传奇事件人物，探索未知……</a>
+					<img id="img" src="img/03.jpg">
+					<em>深度解密传奇事件人物，探索未知……</em>
+					<input type="button" value="播放">
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

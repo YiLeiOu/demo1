@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>img-tag</title>
+<style>
+	ul,h2,li,img{
+		padding: 0;margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	img{
+		border: none;
+	}
+	h2{
+		height:30px; 
+		font-size: 20px; 
+		padding-top: 6px;
+		line-height: 30px; 
+		color: white;
+	}
+	#box{
+		width: 800px; 
+		height: 620px;margin: 100px auto; 
+		padding: 0 10px; 
+		position: relative; 
+		background: url(img/img.jpg) no-repeat;
+		border-radius: 10px;
+	}
+	#picture{
+		width: 760px; 
+		height: 510px; 
+		margin: 10px auto;
+	}
+	#picture img{
+		width: 760px; 
+		height: 510px; 
+		text-align: center;
+	}
+	#prev,#next{
+		display: inline-block; 
+		position: absolute; 
+		top: 280px; 
+		width: 60px; 
+		height: 60px; 
+		border-radius: 50%; 
+		opacity: 0.5; 
+		background: #6f4; 
+		text-align: center; 
+		line-height: 60px; 
+		font-size: 50px; 
+		font-weight: bold;
+		color: white;
+		}
+	#prev{
+	 	left: 40px;
+	}
+	#next{
+	 	right: 40px;
+	}
+
+	#prev:hover,#next:hover{opacity: 1;}
+	
+	ul{
+		width: 200px ;
+		height: 30px; 
+		line-height: 20px; 
+		position: absolute;
+		top: 570px ;
+		left: 380px;
+	}
+	li{ 
+		position: relative;
+		width: 20px; 
+		height: 20px; 
+		float: left; 
+		margin: 0 5px; 
+		border-radius: 50%; 
+		background: #9a9da2; 
+	}
+	#oul div{
+		width: 200px; 
+		height: 150px;
+		display: none;
+		padding: 10px;
+		position: absolute;
+		top: -160px;
+		left: -92px;
+		z-index:10;
+		background: url(img/imgBg.png) no-repeat;
+	}
+	#oul img{
+		width: 180px;
+		height: 120px;
+	}
+	.activ{
+		background: red;
+	}
+	
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var aul=document.getElementById('oul');
+		var aprev=document.getElementById('prev');
+		var anext=document.getElementById('next');
+		var ali=document.getElementsByTagName('li');
+		var apict=document.getElementById('pict');
+		var len=ali.length;
+		var arrimg=['img/01.jpg','img/02.jpg','img/03.jpg','img/04.jpg'];
+		var num=0;
+
+		for (var i =0; i < len; i++) {
+			ali[i].index=i; //索引值，超级有用啊！
+			// 鼠标移入移出展示缩略图
+			ali[i].onmouseover=function(){
+				this.getElementsByTagName('div')[0].style.display='block';
+				this.getElementsByTagName('img')[0].src=arrimg[this.index];
+			}
+			ali[i].onmouseout=function(){
+				this.getElementsByTagName('div')[0].style.display='none';
+			}
+			
+			// 点击小点切换图片
+			ali[i].onclick=function link(){
+				apict.src=arrimg[this.index];
+				for (var j = 0; j < len; j++) {
+					ali[j].className='';
+				}
+				this.className='activ';
+				num=this.index;//很关键的一步，把三个点击动作连接起来的桥梁！
+			}
+			// 图片前后滚动
+			aprev.onclick=function(){
+				num--;
+				if(num==-1){
+					num=len-1;
+				}
+				fun();
+			}
+			anext.onclick=function(){
+				num++;
+				if(num==len){
+					num=0;
+				}
+				fun();
+			}
+			// li的样式更改及主图片切换
+			function fun(){
+				for (var j = 0; j < len; j++) {
+					ali[j].className='';
+				}
+				ali[num].className='activ';
+				apict.src=arrimg[num];
+			}
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div id="box">
+		<h2>带缩略图的图片轮换</h2>
+		<div id="picture">
+			<img id="pict" src="img/01.jpg">
+		</div>
+		<a id="prev" href="javascript:;"><</a>
+		<a id="next" href="javascript:;">></a>
+		<ul id="oul">
+			<li>
+				<div><img ></div>
+			</li>
+			<li>
+				<div><img ></div>
+			</li>
+			<li>
+				<div><img ></div>
+			</li>
+			<li>
+				<div><img ></div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

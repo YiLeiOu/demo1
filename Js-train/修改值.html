@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>修改文本</title>
+<style>
+	header,section,img{
+		padding: 0;
+		margin:0;
+	}
+	img{
+		border:none;
+	}
+	a{
+		text-decoration: none;
+	}
+	
+	.box{
+		margin:100px auto;
+		width: 400px;
+	}
+	
+	header{
+		height: 30px;
+		line-height: 30px;
+		padding-left: 20px;
+		font-size: 16px;
+		color: white;
+		background: green;
+	}
+	section{
+		background: ;
+		border: 1px solid green;
+	}
+	.edit{
+		height: 30px;
+		padding-left: 20px;
+		line-height: 30px;
+		border-bottom: 1px solid red;
+	}
+	a{
+		font-size: 14px;
+		color: black;
+	}
+	input{
+		display: none;
+	}
+	img{
+		vertical-align: -6px;
+	}
+	.save,.quit{
+		display: none;
+		font-size: 14px;
+		color: green;
+	}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var obox=document.getElementById('box');
+		var odiv=obox.getElementsByTagName('div');
+		
+		for(j=0; j<odiv.length; j++){
+			edit(odiv[j]);
+		}
+		function edit(div){
+			var oa=div.getElementsByTagName('a');
+			var oinput=div.getElementsByTagName('input')[0];
+			for(i=0; i<oa.length; i++){
+				oa[1].onclick=function(){
+					oa[0].style.display='none';
+					oa[1].style.display='none';
+					oa[2].style.display='inline';
+					oa[3].style.display='inline';
+					oinput.style.display='inline';
+					oinput.value=oa[0].innerHTML;
+				}
+				oa[2].onclick=function(){
+					oa[0].innerHTML=oinput.value;
+					fun();
+				}
+				oa[3].onclick=function(){
+					fun();
+				}
+				function fun(){
+					oa[0].style.display='inline';
+					oa[1].style.display='inline';
+					oa[2].style.display='none';
+					oa[3].style.display='none';
+					oinput.style.display='none';
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="box" class="box">
+		<header>分类名称</header>
+		<section>
+			<div id="edit" class="edit">
+				<a href="#">修改输入框的值</a>
+				<input id="input" type="text" value="">
+				<a href="javascript:;"><img src="img/edit.png"></a>
+				<a class="save" href="javascript:;">保存</a>
+				<a class="quit" href="javascript:;">取消</a>
+			</div>
+			<div id="edit" class="edit">
+				<a href="#">修改输入框</a>
+				<input id="input" type="text" value="">
+				<a href="javascript:;"><img src="img/edit.png"></a>
+				<a class="save" href="javascript:;">保存</a>
+				<a class="quit" href="javascript:;">取消</a>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

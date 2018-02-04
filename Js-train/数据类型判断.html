@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html ;charset=utf-8">
+	<title>数据类型判断</title>
+	<style type="text/css">
+		ul,li,p{padding: 0;margin: 0;}
+		li{list-style: none;}
+		.warp{width: 600px;margin: 0 auto;}
+		.warp div{}
+		.warp p:last-child{border: 1px solid black;}
+		.warp li{font-size: 12px;}
+		.warp span{font-size: 14px;}
+	</style>
+
+	<script type="text/javascript">
+	window.onload=function(){
+		var aP=document.getElementsByTagName('p');
+		var aLi=document.getElementsByTagName('li');
+		var arr=[200,'200px','abc'-10,[],-1234,54,-9,'400',function(){alert(1);},
+		null,document,[],true,'200px'-50,'23.45元',Number('abc'),function(){alert(5);}
+		];
+		var atran=[];
+		var tranA=[];
+		var num=[];
+
+		//typeof(),Number(),paseInt(),paseFloat(),isNaN()
+		//Number,String,boolean,function(),object,array,null,undefine
+		//charAt()字符串取值操作
+
+		//把数组内的值输出到浏览器
+		for(var i=0;i<arr.length;i++){
+			aP[1].innerHTML+=arr[i]+'、 ';
+		}
+
+		for(var i=0;i<arr.length;i++){
+
+			if(typeof(arr[i])!='number'&&typeof(arr[i])!='function'){
+
+					atran.push(parseFloat(arr[i])||Number(arr[i]));
+					num.push(i);
+
+			}
+
+			if(typeof(arr[i])==='number'&&!isNaN(arr[i])){
+				aLi[0].innerHTML+=arr[i]+'、';
+			}
+
+			if(typeof(arr[i])==='number'&&isNaN(arr[i])){
+				aLi[6].innerHTML+=i+' , ';
+			}
+
+		}
+
+		for(var j=0; j<atran.length; j++){
+
+			if(!isNaN(atran[j])){
+				aLi[1].innerHTML+=atran[j]+', ';
+				tranA.push(atran[j]);
+				aLi[2].innerHTML+=num[j]+', ';//在数组arr的位置
+			}
+
+			if(!isNaN(atran[j])){
+				aLi[3].innerHTML+='"'+arr[num[j]]+'"'+', '; //可以转换为数字的数据
+				aLi[4].innerHTML+=(parseFloat(arr[num[j]])||Number(arr[num[j]]))+', ';
+				//转换后的数据的值
+			}
+		}
+		var max=0;
+		for(var i=0; i<tranA.length; i++){
+
+			if(max<tranA[i])
+				max=tranA[i];
+		}
+		aLi[5].innerHTML+=max;
+
+	}
+	</script>
+</head>
+<body>
+	<div class="warp">
+		<div>
+			<p>把以下数据进行归类：</p>
+			<p></p>
+		</div>
+		<ul>
+			<li>
+				<span>1,找到arr里所有数字：</span>
+			</li>
+			<li><span>数据：</span></li>
+			<li><span>序号：</span></li>
+			<li><span>2,找到可以转换成数字的：</span></li>
+			<li><span>转换后的结果：</span></li>
+			<li><span>3,转成数字后判断最大值：</span></li>
+			<li><span>4,把NaN所在位置找出来：</span></li>
+		</ul>
+	</div>
+</body>
+</html>

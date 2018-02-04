@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>QQlist</title>
+<style>
+	ul,h2,li{padding: 0;margin: 0;}
+	li{list-style: none;}
+	#list{width: 250px;border: 1px solid black;margin: 0 auto;}
+	#list h2{font-size: 24px;line-height: 34px;text-indent: 24px;
+		background:url(img/ico1.gif) no-repeat 12px center #b8eaff;}
+	#list .active{background:url(img/ico2.gif) no-repeat 12px center #87afc3;}
+	#list ul{display: none;}
+	#list li{}
+	#list ul li{list-style: none;font-size: 18px;line-height: 26px ;text-indent: 24px;}
+	#list ul .click{background:#f3c1c1;}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var oList=document.getElementById('list');
+		var oUl=oList.getElementsByTagName('ul');
+		var oH2=oList.getElementsByTagName('h2');
+		var arrLi=[];
+
+		
+		for(var i=0;i<oH2.length;i++){
+			oH2[i].index=i;    //索引值
+			oH2[i].onclick=function(){
+				if(this.className==''){
+					for(var j=0;j<oH2.length;j++){
+						oUl[j].style.display='none';
+						oH2[j].className='';
+					}
+					oUl[this.index].style.display='block';
+					this.className='active';
+				}else{
+					oUl[this.index].style.display='none';
+					this.className='';
+					}
+
+				for(var j=0;j<arrLi.length;j++){
+						arrLi[j].className='';
+				}
+			}
+		}
+		
+		for( var i=0; i<oUl.length; i++ ){
+			var oLi=oUl[i].getElementsByTagName( 'li' );
+			for( var j=0; j<oLi.length; j++ ){
+				arrLi.push( oLi[j] );
+			}
+		}
+
+		var fun=function(){
+			for(var j=0;j<arrLi.length;j++){
+				arrLi[j].className='';
+			}
+		}
+
+		for(var i=0;i<arrLi.length;i++){
+			arrLi[i].onclick=function(){
+				if(this.className=='click'){
+					fun();
+				}else{
+					fun();
+					this.className='click';
+				}
+			}
+		}
+	}
+</script>
+</head>
+
+<body>
+	<ul id="list">
+		<li>
+			<h2>我的好友</h2>
+			<ul>
+				<li>小明</li>
+				<li>小敏</li>
+				<li>小花</li>
+			</ul>
+		</li>
+		<li>
+			<h2>我的同学</h2>
+			<ul>
+				<li>大环</li>
+				<li>大王</li>
+				<li>大明</li>
+				<li>大华</li>
+			</ul>
+		</li>
+		<li>
+			<h2>我的坏友</h2>
+			<ul>
+				<li>小康</li>
+				<li>小王</li>
+				<li>小林</li>
+				<li>小方</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

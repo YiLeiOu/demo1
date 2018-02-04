@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+	<meta http-equiv="content-type" content="text/html"; charset="utf-8">
+	<title>自定义属性</title>
+	<style type="text/css">
+
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var aButt=document.getElementsByTagName('input');
+		var len=aButt.length;
+		var arr=['A','B','C','D'];
+		
+		alert(arr.length);	
+
+		//为什么只能执行四次？
+		for(var i=0;i<len;i++){
+			aButt[i].num=0;
+			aButt[i].onclick=function(){
+				this.value=arr[this.num];
+				this.num++;
+			if (this.num==arr.length) {
+				this.num=0;
+			};
+
+			}
+
+		}
+	}
+	</script>
+
+</head>
+
+<body>
+	<input type="button" value="0">
+	<input type="button" value="0">
+	<input type="button" value="0">
+</body>
+</HTML>
