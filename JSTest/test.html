@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>拖拽</title>
+	<!--
+	<style type="text/css">
+		#div1, #div2
+		{float:left; width:300px; height:200px; margin:10px;
+			padding:10px;border:1px solid #aaaaaa;
+		}
+	</style>
+<script type="text/javascript">
+	window.onload=function(){
+		function allowDrop(ev)
+		{
+		ev.preventDefault();
+		}
+		function drag(ev)
+		{
+		ev.dataTransfer.setData("Text",ev.target.id);
+		}
+		function drop(ev)
+		{
+		ev.preventDefault();
+		var data=ev.dataTransfer.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+		}
+	}
+</script>
+</head>
+
+<body>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+	  <img src="img/0443080.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="150px"/>
+	</div>
+	<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	-->
+	<style type="text/css">
+#div1, #div2
+{float:left; width:200px; height:200px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script type="text/javascript">
+function allowDrop(A)
+{
+A.preventDefault();
+}
+
+function drag(A)
+{
+A.dataTransfer.setData("Text",A.target.id);
+}
+
+function drop(A)
+{
+A.preventDefault();
+var data=A.dataTransfer.getData("Text");
+A.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="img/0443080.jpg" draggable="true" ondragstart="drag(event)" id="drag1" />
+</div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>test</title>
+<style type="text/css">
+		p{padding:0;margin:0;}
+		#box{
+			width:250px;height:450px;margin:50px auto;border:3px solid #c87c4d;
+			border-radius:30px;padding-top:30px;background:#f7f7f7;overflow:hidden;
+		}
+		#talkBox{
+			width:218px;height:400px;padding:0 2px;margin:10px 10px 5px 10px;border:1px solid #eeeeee;
+			background:#fcf1db;overflow:auto;
+		}
+		#talkBox div{
+			margin:10px 0;
+		}
+		#talkBox span{
+			display: inline-block;max-width:166px;border-radius:5px;padding:5px;font-size:14px;line-height:24px;vertical-align:top;text-align:left;
+		}
+		#img{
+			width:25px;border-radius:50%;
+		}
+		#talk{
+			width:150px;height:20px
+		}
+		#send{
+			height:26px;border:none;border-radius:4px;
+		}
+		#left{
+			float:left;
+		}
+		#right{
+			float:right;
+		}
+		a,input{
+			float:left;margin:0 4px;vertical-align:center;
+		}
+		
+</style>
+
+<script type="text/javascript">
+	window.onload=function(){
+		//获取元素
+		var OtalkBox=document.getElementById('talkBox');
+		var Oimg=document.getElementById('img');
+		var Otalk=document.getElementById('talk');
+		var Osend=document.getElementById('send');
+		var Otab=document.getElementById('tab');
+
+		//var arrUrl['talk1.jpg','talk2.jpg'];忘了用等号！！！
+		//利用数组实现对话框表情的切换
+		var arrUrl=['talk1.jpg','talk2.jpg'];
+		var num=0;
+		//点击表情进行切换
+		function imgsrc(){
+			Oimg.src=arrUrl[num];
+		};
+		imgsrc();
+		Otab.onclick=function(){
+			if(num==0){
+				num++;
+				imgsrc();
+			}else{
+				num=0;
+				imgsrc();
+			};
+		};
+		//发送动作函数
+		Osend.onclick=function(){
+			if(num==0){
+				if(Otalk.value==''){
+					alert("请输入点东西吧！");
+				} else{
+				OtalkBox.innerHTML='<div style="text-align:left">'+Otab.innerHTML+'<span style="background:#9aebfe">'+Otalk.value+'</span>'+'</div>'+OtalkBox.innerHTML;
+				Otalk.value='';
+				};
+			}else {
+				if(Otalk.value==''){
+					alert("请输入点东西吧！");
+				} else{
+				OtalkBox.innerHTML='<div style="text-align:right">'+'<span style="background:#d0cac7">'+Otalk.value+'</span>'+Otab.innerHTML+'</div>'+OtalkBox.innerHTML;
+				Otalk.value='';
+				};
+			};
+		};
+
+	};
+</script>
+</head>
+
+<body>
+	<div id="box">
+		<div id="talkBox"></div>
+		<div id="sendBox">
+			<a id="tab" href="javascript:;"><img id="img"></a>
+			<input id="talk" type="text" value="">
+			<input id="send" type="button" value="发送">
+		</div>
+	</div>
+</body>
+</html>

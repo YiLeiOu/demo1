@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>forBox</title>
+	<style type="text/css">
+		div{
+			width:50px;height:50px;background:red;position:absolute;left:0;top:40px;line-height:50px;text-align: center;font-size:30px;color:white;font-weight:bold;
+		}
+		input.active{color:red;}
+	</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName('div');
+		var oP=document.getElementById('pro');
+		var obtn=document.getElementById('butn1');
+		var obox=document.getElementById('box');
+		var n=2;
+		var num=0;
+		var fun=[fun0,fun1,fun2,fun3]
+			for(var i=0;i<5;i++){
+						obox.innerHTML+='<div>'+i+'</div>';
+					}
+			obtn.onclick=function(){
+					
+					fun[num]();
+					num++;
+					if(num==fun.length){
+						num=0;
+					}
+				n=2;
+			}
+			
+			function fun0(){
+				for(var j=0;j<oDiv.length;j++){
+					oDiv[j].style.left=j*50+'px';
+					if(j<3){
+						//向上
+						oDiv[j].style.top=40+j*50+'px';
+					}else{
+						//向上
+						oDiv[j].style.top=40+(j-n)*50+'px';
+						n+=2;
+					}
+				}
+			}
+
+			function fun1(){
+				for(var j=0;j<oDiv.length;j++){
+					oDiv[j].style.left=j*50+'px';
+					if(j<3){
+						//向下
+						oDiv[j].style.top=40+100-j*50+'px';
+					}else{
+						//向下
+						oDiv[j].style.top=40+100-(j-n)*50+'px';
+						n+=2;
+					}
+				}
+			}
+			function fun2(){
+				for(var j=0;j<oDiv.length;j++){
+					oDiv[j].style.top=40+j*50+'px';
+					if(j<3){
+						//向左
+						oDiv[j].style.left=100-j*50+'px';
+					}else{
+						//向左
+						oDiv[j].style.left=100-(j-n)*50+'px';
+						n+=2;
+					}
+				}
+			}
+			function fun3(){
+				for(var j=0;j<oDiv.length;j++){
+					oDiv[j].style.top=40+j*50+'px';
+					if(j<3){
+						//向右
+						oDiv[j].style.left=j*50+'px';
+					}else{
+						//向右
+						oDiv[j].style.left=(j-n)*50+'px';
+						n+=2;
+					}
+				}
+			}
+	}
+
+
+</script>
+</head>
+
+<body>
+	<input id="butn1" type="button" value="按钮">
+	<p id="box"></p>
+</body>
+</html>

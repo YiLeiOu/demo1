@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>This</title>	
+<style>
+	#list{width: 600px;height: 400px;border:1px solid black;margin: 200px auto;}
+	li{width: 50px;height: 80px;background:red;float: left;position: relative;margin: 100px 20px 0;list-style: none;}
+	#list li div{width: 200px;height: 100px; display: none;background: green;position: absolute;top: -90px;left: 10px;
+		z-index:10; }
+</style>
+<script>
+window.onload = function (){
+	var ali=document.getElementsByTagName('li');
+	var len=ali.length;
+	for(var i=0;i<len;i++){
+		
+		ali[i].onmouseover=function(){
+			this.getElementsByTagName('div')[0].style.display='block';
+		}
+		ali[i].onmouseout=function(){
+			this.getElementsByTagName('div')[0].style.display='none';
+		}
+	}
+	//怎样实现当鼠标移入时才生成一个div？能实现？
+	/*
+	var aLi  = document.getElementsByTagName('li');
+	var that = null;
+	
+	for( var i=0; i<aLi.length; i++ ){
+		aLi[i].onmouseover = function (){
+			that = this;
+			fn1();
+		};
+		aLi[i].onmouseout = function (){
+			this.getElementsByTagName('div')[0].style.display = 'none';
+		};
+	}
+	
+	function fn1(){
+		that.getElementsByTagName('div')[0].style.display = 'block';
+	}
+	*/
+}
+</script>
+</head>
+
+<body>
+	<ul id="list">
+		<li>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+		</li>
+	</ul>
+</body>
+</html>

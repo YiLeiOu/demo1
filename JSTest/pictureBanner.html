@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>图片切换</title>
+	<style type="text/css">
+		/* 样式重置 */
+		header,body,p,img{padding:0;margin:0;}
+		img{border:none;}
+		a{text-decoration:none;}
+		
+		/* 设置样式 */
+		header{
+			width:800px;height:40px;margin:30px auto 0;border:4px solid #8080c0;line-height:40px;font-size:24px;color:block;background:#bdc6d0;border-radius:6px;
+			text-align:center;
+		}
+		header input{
+			width:50px;height:24px;border-radius:5px;font-size:16px;background:#9a9da2;
+		}
+		#box{
+			width:800px;height:600px;margin:0 auto;border:4px solid green;border-radius:6px;
+			position:relative;overflow:hidden;background:#8080c0; 
+		}
+		#picture{
+			height:600px;
+		}
+		#picName,#picNum{
+			width:800px;height:30px;background:black;
+			opacity:0.4;line-height:30px;color:#ffffff;text-align:center;
+			font-size:16px;position:absolute;
+		}
+		#picName{
+			top:0;
+		}
+		#picNum{
+			top:570px;
+		}
+		#prev,#next{
+			display:inline-block;width:50px;height:50px;position:absolute;top:275px;
+			background:#9a9da2;font-size:36px;font-weight:bold;line-height:50px;text-align:center;
+			color:#ffffff;border-radius:5px;opacity:0.8;
+		}
+		#prev{
+			left:5px;
+		}
+		#next{
+			right:5px;
+		}
+		#prev:hover,#next:hover{opacity:1;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function() {
+			/* 获取元素 */
+			var Oimg=document.getElementById('picture');
+			var OpicName=document.getElementById('picName');
+			var OpicNum=document.getElementById('picNum');
+			var Oprev=document.getElementById('prev');
+			var Onext=document.getElementById('next');
+			var Obutn1=document.getElementById('butn1');
+			var Obutn2=document.getElementById('butn2');
+			/* 数组获取文件资源 */
+			var arrUrl=['35.jpg','23.jpg','67.jpg','98.jpg','100.jpg','102.jpg','104.jpg'];
+			var arrName=['海边美女','清秀美女','性感美女','悠闲美女','忧伤美女','清新美女','睡美人'];
+			var num=0;
+			/* 初始化 */
+			function picTab(){
+				OpicNum.innerHTML=num+1+'/'+arrUrl.length;
+				OpicName.innerHTML=arrName[num];
+				Oimg.src=arrUrl[num];
+			}
+			picTab();
+			/* 重复循环 */	
+			Obutn1.onclick=function (){
+				Obutn1.style.background="red";
+				Obutn2.style.background="#9a9da2";
+					/* 上一张 */
+					Oprev.onclick=function(){
+					num--;
+					if(num==-1){
+						num=arrUrl.length-1;
+						};
+					picTab();
+					};
+					/* 下一张 */
+					Onext.onclick=function(){
+					num++;
+					if(num==arrUrl.length){
+						num=0;
+						};
+					picTab();
+					};
+				};
+				
+			/* 单向循环 */	
+			Obutn2.onclick=function(){
+				Obutn2.style.background="red";
+				Obutn1.style.background="#9a9da2";
+					/* 上一张 */
+					Oprev.onclick=function(){
+					num--;
+					if(num==-1){
+						num=0;
+						};
+					picTab();
+					};
+					/* 下一张 */
+					Onext.onclick=function(){
+					num++;
+					if(num==arrUrl.length){
+						num=arrName.length-1;
+						};
+					picTab();
+					};
+				};
+		};
+	</script>
+</head>
+
+<body>
+	<header>
+		<input id="butn1" type="button" value="循环">
+		<input id="butn2" type="button" value="单向">
+	</header>	
+	<div id="box">
+		<img id="picture"/>
+		<p id="picName">图片加载中...</p>
+		<p id="picNum">图片计算中...</p>
+		<a id="prev" href="javascript:;"><</a>
+		<a id="next" href="javascript:;">></a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>forBox</title>
+	<style type="text/css">
+		div{
+			width:50px;height:50px;background:red;position:absolute;left:0;top:0;line-height:50px;text-align: center;font-size:30px;color:white;font-weight:bold;
+		}
+	</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName('div');
+			var n=2;
+			var inne='';
+			
+			for(var i=0;i<7;i++){
+				inne+='<div>'+i+'</div>';
+			}
+			document.body.innerHTML=inne;
+			
+			
+			//方法二：
+			for(var j=0;j<oDiv.length;j++){
+				oDiv[j].style.left=j*50+'px';
+				if(j<4){
+					oDiv[j].style.top=j*50+'px';
+				}else{
+					oDiv[j].style.top=(j-n)*50+'px';
+					n+=2;
+				}
+			}
+
+
+			//方法一：
+			/*
+			for(var j=0;j<oDiv.length;j++){
+				oDiv[j].style.left=j*50+'px';
+				oDiv[j].style.top=j*50+'px';
+			}
+				
+			for(j=6;j<oDiv.length;j++){
+				oDiv[j].style.top=(j-n)*50+'px';
+				n+=2;
+			}
+			*/
+	}
+
+
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
